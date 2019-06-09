@@ -3,8 +3,8 @@ import './App.css';
 
 function App() {
   return (
-    <div>
-      <h2>Hooks Testing - 101</h2>
+    <div className="container">
+      <h2 class="header">Hooks Testing - 101</h2>
     </div>
   );
 }
