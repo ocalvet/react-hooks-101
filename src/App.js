@@ -11,9 +11,8 @@ function App() {
       const response = await fetch('https://dog.ceo/api/breeds/image/random');
       const json = await response.json();
       setDog(json.message);
-      console.log('got dog', json);
     };
-    getDog();
+    setInterval(getDog, 1000);
   }, []);
   return (
     <div className="container">
