@@ -12,7 +12,8 @@ function App() {
       const json = await response.json();
       setDog(json.message);
     };
-    setInterval(getDog, 1000);
+    const interval = setInterval(getDog, 1000);
+    return () => clearInterval(interval);
   }, []);
   return (
     <div className="container">
