@@ -15,11 +15,13 @@ function App() {
     const interval = setInterval(getDog, 1000);
     return () => clearInterval(interval);
   }, []);
+  const changeTimer = event => console.log(parseInt(event.target.value));
   return (
     <div className="container">
       <h2 class="header">Hooks Testing - 101</h2>
       <h2>Counter - {count}</h2>
-      <button onClick={() => setCount(count + 1)}>Increment Count</button>
+      <button onClick={() => setCount(count + 1)}>Increment Count</button>{' '}
+      <input onChange={changeTimer} />
       <hr />
       <img src={dogImage} alt="dog-images" />
     </div>
