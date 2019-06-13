@@ -3,6 +3,7 @@ import './App.css';
 
 function App() {
   const [count, setCount] = useState(0);
+  const [timer, setTimer] = useState(1000);
   const [dogImage, setDog] = useState(
     'https://images.dog.ceo/breeds/mastiff-tibetan/n02108551_1104.jpg'
   );
@@ -12,16 +13,17 @@ function App() {
       const json = await response.json();
       setDog(json.message);
     };
-    const interval = setInterval(getDog, 1000);
+    const interval = setInterval(getDog, timer);
     return () => clearInterval(interval);
   }, []);
-  const changeTimer = event => console.log(parseInt(event.target.value));
+  const changeTimer = event => setTimer(parseInt(event.target.value));
   return (
     <div className="container">
       <h2 class="header">Hooks Testing - 101</h2>
       <h2>Counter - {count}</h2>
       <button onClick={() => setCount(count + 1)}>Increment Count</button>{' '}
       <input onChange={changeTimer} />
+      {` ${timer}`}
       <hr />
       <img src={dogImage} alt="dog-images" />
     </div>
