@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 
-function App() {
-  const [count, setCount] = useState(0);
-  const [timer, setTimer] = useState(1000);
+const useDogs = () => {
   const [dogImage, setDog] = useState(
     'https://images.dog.ceo/breeds/mastiff-tibetan/n02108551_1104.jpg'
   );
@@ -12,22 +10,26 @@ function App() {
     const getDog = async () => {
       const response = await fetch('https://dog.ceo/api/breeds/image/random');
       const json = await response.json();
+      console.log('Got image');
       setDog(json.message);
     };
-    const interval = setInterval(getDog, timer);
+    const interval = setInterval(getDog, 1000);
     return () => {
       console.log('Cleaning interval');
       clearInterval(interval);
     };
-  }, [timer]);
-  const changeTimer = event => setTimer(parseInt(event.target.value));
+  }, []);
+  return dogImage;
+};
+
+function App() {
+  const [count, setCount] = useState(0);
+  const dogImage = useDogs();
   return (
     <div className="container">
       <h2 class="header">Hooks Testing - 101</h2>
       <h2>Counter - {count}</h2>
       <button onClick={() => setCount(count + 1)}>Increment Count</button>{' '}
-      <input onChange={changeTimer} />
-      {` ${timer}`}
       <hr />
       <img src={dogImage} alt="dog-images" />
     </div>
