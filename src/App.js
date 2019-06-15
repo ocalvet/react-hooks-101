@@ -1,29 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import useDogs from './useDogs';
 import './App.css';
 
-const useDogs = () => {
-  const [dogImage, setDog] = useState(
-    'https://images.dog.ceo/breeds/mastiff-tibetan/n02108551_1104.jpg'
-  );
-  useEffect(() => {
-    console.log('Starting interval');
-    const getDog = async () => {
-      const response = await fetch('https://dog.ceo/api/breeds/image/random');
-      const json = await response.json();
-      console.log('Got image');
-      setDog(json.message);
-    };
-    const interval = setInterval(getDog, 1000);
-    return () => {
-      console.log('Cleaning interval');
-      clearInterval(interval);
-    };
-  }, []);
-  return dogImage;
-};
-
 function App() {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = React.useState(0);
   const dogImage = useDogs();
   return (
     <div className="container">
