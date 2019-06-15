@@ -8,14 +8,18 @@ function App() {
     'https://images.dog.ceo/breeds/mastiff-tibetan/n02108551_1104.jpg'
   );
   useEffect(() => {
+    console.log('Starting interval');
     const getDog = async () => {
       const response = await fetch('https://dog.ceo/api/breeds/image/random');
       const json = await response.json();
       setDog(json.message);
     };
     const interval = setInterval(getDog, timer);
-    return () => clearInterval(interval);
-  }, []);
+    return () => {
+      console.log('Cleaning interval');
+      clearInterval(interval);
+    };
+  }, [timer]);
   const changeTimer = event => setTimer(parseInt(event.target.value));
   return (
     <div className="container">
