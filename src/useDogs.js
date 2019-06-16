@@ -12,7 +12,7 @@ const useDogs = () => {
       console.log('Got image');
       setDog(json.message);
     };
-    const interval = setInterval(getDog, 1000);
+    const interval = setInterval(getDog, 3000);
     return () => {
       console.log('Cleaning interval');
       clearInterval(interval);
