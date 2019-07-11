@@ -15,4 +15,10 @@ describe('<App />', () => {
     const h2 = container.firstChild.childNodes[1];
     expect(h2.textContent).toBe('Counter - 0');
   });
+
+  it('should draw a button', () => {
+    const { container } = render(<App />);
+    const button = container.firstChild.childNodes[2];
+    expect(button.textContent).toBe('Increment Count');
+  });
 });
