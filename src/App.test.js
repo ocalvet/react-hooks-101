@@ -9,4 +9,10 @@ describe('<App />', () => {
     const h2 = container.firstChild.firstChild;
     expect(h2.textContent).toBe('Hooks Testing - 101');
   });
+
+  it('should display count initialized to 0', () => {
+    const { container } = render(<App />);
+    const h2 = container.firstChild.childNodes[1];
+    expect(h2.textContent).toBe('Counter - 0');
+  });
 });
