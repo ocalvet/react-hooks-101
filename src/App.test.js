@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  render,
-  fireEvent,
-  cleanup,
-  waitForElement
-} from '@testing-library/react';
+import { render, fireEvent, cleanup } from '@testing-library/react';
 import App from './App';
 
 describe('<App />', () => {
@@ -45,5 +40,11 @@ describe('<App />', () => {
     const { container } = render(<App />);
     const button = container.firstChild.childNodes[2];
     expect(button.textContent).toBe('Increment Count');
+  });
+
+  it('should draw a hr', () => {
+    const { container } = render(<App />);
+    const hr = container.firstChild.childNodes[3];
+    expect(hr).toMatchSnapshot('<hr />');
   });
 });
