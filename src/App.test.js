@@ -1,5 +1,10 @@
 import React from 'react';
-import { render, cleanup } from '@testing-library/react';
+import {
+  render,
+  fireEvent,
+  cleanup,
+  waitForElement
+} from '@testing-library/react';
 import App from './App';
 
 describe('<App />', () => {
@@ -13,7 +18,27 @@ describe('<App />', () => {
   it('should display count initialized to 0', () => {
     const { container } = render(<App />);
     const h2 = container.firstChild.childNodes[1];
+    const btn = container.firstChild.childNodes[2];
     expect(h2.textContent).toBe('Counter - 0');
+
+    fireEvent.click(btn);
+    expect(h2.textContent).toBe('Counter - 1');
+
+    fireEvent.click(btn);
+    expect(h2.textContent).toBe('Counter - 2');
+  });
+
+  it('should increment the counter', () => {
+    const { container } = render(<App />);
+    const h2 = container.firstChild.childNodes[1];
+    const btn = container.firstChild.childNodes[2];
+    expect(h2.textContent).toBe('Counter - 0');
+
+    fireEvent.click(btn);
+    expect(h2.textContent).toBe('Counter - 1');
+
+    fireEvent.click(btn);
+    expect(h2.textContent).toBe('Counter - 2');
   });
 
   it('should draw a button', () => {
