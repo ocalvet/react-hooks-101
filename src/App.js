@@ -5,10 +5,6 @@ import './App.css';
 function App() {
   const [count, setCount] = React.useState(0);
   const dogImage = useDogs();
-  window.top.postMessage({ type: 'dog.image.changed', dogImage }, '*');
-  window.onmessage = function(e) {
-    console.log('CHILD MSG RECEIVED', e);
-  };
   const onUpdateCount = newCounter => {
     if (newCounter >= 0) setCount(newCounter);
   };
