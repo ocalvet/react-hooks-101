@@ -15,7 +15,11 @@ function App() {
       <h2>Counter - {count}</h2>
       <button onClick={() => setCount(count + 1)}>Increment Count</button>{' '}
       <hr />
-      <img src={dogImage} alt="dog-images" />
+      <img
+        style={{ width: 250, height: 250 }}
+        src={dogImage}
+        alt="dog-images"
+      />
     </div>
   );
 }
