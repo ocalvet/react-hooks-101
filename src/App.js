@@ -14,12 +14,14 @@ function App() {
       <h2 className="header">Hooks Testing - 101</h2>
       <h2>Counter - {count}</h2>
       <button onClick={() => setCount(count + 1)}>Increment Count</button>{' '}
+      <button onClick={() => setCount(count - 1)}>Decrement Count</button>{' '}
       <hr />
       <img
         style={{ width: 250, height: 250 }}
         src={dogImage}
         alt="dog-images"
       />
+      <hr />
     </div>
   );
 }
